@@ -14,9 +14,19 @@ export default function Footer() {
           {/* Brand */}
           <div className="text-center md:text-left">
             <Link href="/" className="text-lg font-bold text-white">
-              DP Store
+              Đình Phong Store
             </Link>
             <p className="text-sm mt-1">Chuyên iPhone mới &amp; cũ, sửa chữa, thu cũ đổi mới</p>
+            <p className="text-sm text-gray-400 mt-2">150 Thái Thị Bôi, Thanh Khê, Đà Nẵng</p>
+            <p className="text-sm text-gray-400">Hotline/Zalo: 0378 207 593 - 0935 462 493</p>
+            <a
+              href="https://www.facebook.com/DinhPhongstore"
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm text-gray-400 hover:text-white"
+            >
+              Facebook: Châu Đình Phong (Đình Phong Store)
+            </a>
           </div>
 
           {/* Links */}
@@ -35,7 +45,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="mt-6 pt-6 border-t border-gray-700 text-center text-sm text-gray-500">
-          &copy; {new Date().getFullYear()} DP Store. All rights reserved.
+          &copy; {new Date().getFullYear()} Đình Phong Store. All rights reserved.
         </div>
       </div>
     </footer>

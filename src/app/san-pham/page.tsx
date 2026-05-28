@@ -6,9 +6,9 @@ import Pagination from "@/components/Pagination"
 export const revalidate = 60
 
 export const metadata: Metadata = {
-  title: "Sản phẩm iPhone | DP Store",
+  title: "Sản phẩm iPhone | Đình Phong Store",
   description:
-    "Khám phá bộ sưu tập iPhone mới và cũ với giá tốt nhất. Đa dạng mẫu mã, bảo hành uy tín.",
+    "Khám phá bộ sưu tập iPhone mới và cũ tại Đình Phong Store. Đa dạng mẫu mã, bảo hành uy tín và hỗ trợ trả góp.",
 }
 
 interface ProductsPageProps {

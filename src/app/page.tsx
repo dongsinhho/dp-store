@@ -28,8 +28,11 @@ export default async function HomePage() {
               iPhone chính hãng, giá tốt nhất
             </h1>
             <p className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed">
-              Mua bán iPhone mới và cũ, dịch vụ sửa chữa uy tín, thu cũ đổi mới
-              với giá hấp dẫn. Cam kết chất lượng, bảo hành đầy đủ.
+              Mua bán iPhone mới và cũ, dịch vụ sửa chữa uy tín, thu cũ đổi mới với giá hấp dẫn.
+              1 đổi 1 trong 15 ngày, hỗ trợ trả góp, cam kết chính hãng và bảo hành uy tín.
+            </p>
+            <p className="mt-4 text-sm sm:text-base text-blue-200 leading-relaxed">
+              Địa chỉ: 150 Thái Thị Bôi, Thanh Khê, Đà Nẵng · Hotline/Zalo: 0378 207 593 - 0935 462 493
             </p>
             <Link
               href="/san-pham"

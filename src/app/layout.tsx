@@ -17,9 +17,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "DP Store - Chuyên iPhone mới & cũ",
+  title: "Đình Phong Store - Uy tín, chất lượng, tận tâm",
   description:
-    "Mua bán iPhone mới và cũ, dịch vụ sửa chữa iPhone, thu cũ đổi mới tại DP Store.",
+    "Mua bán iPhone mới và cũ, sửa chữa iPhone, thu cũ đổi mới tại Đình Phong Store. Địa chỉ 150 Thái Thị Bôi, Thanh Khê, Đà Nẵng. Hotline/Zalo 0378 207 593 - 0935 462 493.",
 };
 
 export default function RootLayout({

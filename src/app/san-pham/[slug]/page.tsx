@@ -33,18 +33,19 @@ export async function generateMetadata({
 
   if (!product) {
     return {
-      title: "Sản phẩm không tồn tại | DP Store",
+      title: "Sản phẩm không tồn tại | Đình Phong Store",
     }
   }
 
   // Meta title: max 60 chars
   const title = product.name.length > 53
-    ? product.name.slice(0, 53) + "… | DP"
-    : `${product.name} | DP Store`
+    ? product.name.slice(0, 53) + "… | Đình Phong"
+    : `${product.name} | Đình Phong Store`
   const metaTitle = title.length > 60 ? title.slice(0, 57) + "..." : title
 
   // Meta description: max 160 chars from product description
-  const rawDescription = product.description || `Mua ${product.name} giá tốt tại DP Store`
+  const rawDescription =
+    product.description || `Mua ${product.name} giá tốt tại Đình Phong Store`
   const metaDescription =
     rawDescription.length > 160
       ? rawDescription.slice(0, 157) + "..."

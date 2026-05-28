@@ -9,8 +9,74 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #020617;
+    --foreground: #f8fafc;
+    --surface: #0f172a;
+    --surface-2: #111827;
+    --surface-3: #1e293b;
+    --border: #334155;
+    --muted: #94a3b8;
+  }
+
+  body {
+    color-scheme: dark;
+  }
+
+  .bg-white {
+    background-color: #0f172a !important;
+  }
+
+  .bg-gray-50 {
+    background-color: #0b1120 !important;
+  }
+
+  .bg-gray-100 {
+    background-color: #111827 !important;
+  }
+
+  .bg-gray-200 {
+    background-color: #1e293b !important;
+  }
+
+  .bg-black {
+    background-color: #020617 !important;
+  }
+
+  .text-gray-900 {
+    color: #f8fafc !important;
+  }
+
+  .text-gray-800 {
+    color: #e2e8f0 !important;
+  }
+
+  .text-gray-700 {
+    color: #cbd5e1 !important;
+  }
+
+  .text-gray-600,
+  .text-gray-500 {
+    color: #94a3b8 !important;
+  }
+
+  .border-gray-200 {
+    border-color: #334155 !important;
+  }
+
+  .border-gray-300 {
+    border-color: #475569 !important;
+  }
+
+  .border-gray-100 {
+    border-color: #1f2937 !important;
+  }
+
+  .hover\:bg-gray-50:hover {
+    background-color: #111827 !important;
+  }
+
+  .hover\:bg-gray-100:hover {
+    background-color: #111827 !important;
   }
 }
 
