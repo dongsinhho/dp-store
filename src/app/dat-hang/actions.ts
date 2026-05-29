@@ -1,6 +1,6 @@
 "use server"
 
-import { createServerPb } from "@/lib/pocketbase"
+import { createServerPb, createAdminPb } from "@/lib/pocketbase"
 import { orderFormSchema } from "@/lib/validations"
 import { CartItem } from "@/lib/types"
 
@@ -47,14 +47,23 @@ export async function createOrder(input: CreateOrderInput): Promise<OrderResult>
     return { success: false, error: firstError.message }
   }
 
-  const pb = createServerPb()
+  let pb;
+  try {
+    pb = await createAdminPb()
+  } catch {
+    // Fallback to unauthenticated if admin auth fails
+    pb = createServerPb()
+  }
 
   try {
-    // Verify stock availability for all items and collect all conflicts
+    // Verify stock availability for all items and collect current stock values
     const stockConflicts: StockConflict[] = []
+    const productStocks = new Map<string, number>()
+
     for (const item of input.items) {
       try {
         const product = await pb.collection("products").getOne(item.productId)
+        productStocks.set(item.productId, product.stock)
         if (product.stock < item.quantity) {
           stockConflicts.push({
             productId: item.productId,
@@ -63,13 +72,22 @@ export async function createOrder(input: CreateOrderInput): Promise<OrderResult>
             availableStock: product.stock,
           })
         }
-      } catch {
+      } catch (err: unknown) {
+        const isNotFound =
+          err instanceof Object && "status" in err && (err as { status: number }).status === 404
         stockConflicts.push({
           productId: item.productId,
           productName: item.name,
           requestedQuantity: item.quantity,
           availableStock: 0,
         })
+        if (isNotFound) {
+          return {
+            success: false,
+            error: `Sản phẩm "${item.name}" không còn tồn tại. Vui lòng xóa khỏi giỏ hàng và thử lại.`,
+            stockConflicts,
+          }
+        }
       }
     }
 
@@ -112,10 +130,10 @@ export async function createOrder(input: CreateOrderInput): Promise<OrderResult>
         price: item.price,
       })
 
-      // Decrement product stock
-      const product = await pb.collection("products").getOne(item.productId)
+      // Decrement product stock using the value we already fetched
+      const currentStock = productStocks.get(item.productId) ?? 0
       await pb.collection("products").update(item.productId, {
-        stock: product.stock - item.quantity,
+        stock: currentStock - item.quantity,
       })
     }
 

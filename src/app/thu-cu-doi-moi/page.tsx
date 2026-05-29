@@ -183,22 +183,22 @@ export default function TradeInPage() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <div className="flex flex-col items-center p-4 bg-blue-50 rounded-lg text-center">
-            <Smartphone className="w-10 h-10 text-blue-600 mb-2" />
+          <div className="flex flex-col items-center p-4 bg-gray-100 border border-gray-200 rounded-lg text-center">
+            <Smartphone className="w-10 h-10 text-blue-500 mb-2" />
             <h3 className="font-semibold mb-1">Bước 1: Gửi thông tin</h3>
             <p className="text-sm text-gray-600">
               Điền thông tin thiết bị cũ và chọn máy mới muốn đổi (nếu có).
             </p>
           </div>
-          <div className="flex flex-col items-center p-4 bg-blue-50 rounded-lg text-center">
-            <ArrowRightLeft className="w-10 h-10 text-blue-600 mb-2" />
+          <div className="flex flex-col items-center p-4 bg-gray-100 border border-gray-200 rounded-lg text-center">
+            <ArrowRightLeft className="w-10 h-10 text-blue-500 mb-2" />
             <h3 className="font-semibold mb-1">Bước 2: Định giá</h3>
             <p className="text-sm text-gray-600">
               Nhân viên sẽ liên hệ và định giá thiết bị cũ của bạn.
             </p>
           </div>
-          <div className="flex flex-col items-center p-4 bg-blue-50 rounded-lg text-center">
-            <CheckCircle className="w-10 h-10 text-blue-600 mb-2" />
+          <div className="flex flex-col items-center p-4 bg-gray-100 border border-gray-200 rounded-lg text-center">
+            <CheckCircle className="w-10 h-10 text-blue-500 mb-2" />
             <h3 className="font-semibold mb-1">Bước 3: Hoàn tất</h3>
             <p className="text-sm text-gray-600">
               Xác nhận giá, gửi máy cũ và nhận máy mới.
@@ -208,7 +208,7 @@ export default function TradeInPage() {
       </div>
 
       {/* Trade-in request form */}
-      <div className="bg-white border rounded-lg p-6 shadow-sm">
+      <div className="bg-white border border-gray-200 rounded-lg p-6">
         <h2 className="text-xl font-semibold mb-6">Gửi yêu cầu thu cũ đổi mới</h2>
 
         {submitResult?.error && (
@@ -228,7 +228,7 @@ export default function TradeInPage() {
                 type="text"
                 id="customer_name"
                 name="customer_name"
-                className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                className={`w-full px-3 py-2 border rounded-md bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                   fieldErrors.customer_name ? "border-red-500" : "border-gray-300"
                 }`}
                 placeholder="Nguyễn Văn A"
@@ -246,7 +246,7 @@ export default function TradeInPage() {
                 type="tel"
                 id="customer_phone"
                 name="customer_phone"
-                className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                className={`w-full px-3 py-2 border rounded-md bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                   fieldErrors.customer_phone ? "border-red-500" : "border-gray-300"
                 }`}
                 placeholder="0912345678"
@@ -270,7 +270,7 @@ export default function TradeInPage() {
                   type="text"
                   id="old_device_model"
                   name="old_device_model"
-                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  className={`w-full px-3 py-2 border rounded-md bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                     fieldErrors.old_device_model ? "border-red-500" : "border-gray-300"
                   }`}
                   placeholder="iPhone 13 Pro Max"
@@ -287,7 +287,7 @@ export default function TradeInPage() {
                 <select
                   id="old_device_storage"
                   name="old_device_storage"
-                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  className={`w-full px-3 py-2 border rounded-md bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                     fieldErrors.old_device_storage ? "border-red-500" : "border-gray-300"
                   }`}
                 >
@@ -314,7 +314,7 @@ export default function TradeInPage() {
                 name="old_device_battery"
                 min="0"
                 max="100"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="VD: 85"
               />
             </div>
@@ -327,7 +327,7 @@ export default function TradeInPage() {
                 id="old_device_condition"
                 name="old_device_condition"
                 rows={3}
-                className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                className={`w-full px-3 py-2 border rounded-md bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                   fieldErrors.old_device_condition ? "border-red-500" : "border-gray-300"
                 }`}
                 placeholder="Mô tả tình trạng máy: màn hình, vỏ, chức năng... (tối thiểu 10 ký tự)"
@@ -349,7 +349,7 @@ export default function TradeInPage() {
               <select
                 id="new_product"
                 name="new_product"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">Chưa chọn sản phẩm</option>
                 {products.map((product) => (
@@ -398,7 +398,7 @@ export default function TradeInPage() {
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
-                  className="flex items-center gap-2 px-4 py-2 border border-dashed border-gray-300 rounded-md hover:border-blue-500 hover:bg-blue-50 transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md hover:border-blue-500 hover:bg-gray-100 transition-colors"
                 >
                   <Upload className="w-4 h-4" />
                   <span>Chọn ảnh</span>

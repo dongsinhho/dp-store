@@ -194,7 +194,7 @@ export default function RepairPage() {
           {REPAIR_SERVICES.map((service) => (
             <div
               key={service.title}
-              className="p-4 border rounded-lg bg-white shadow-sm"
+              className="p-4 border border-gray-200 rounded-lg bg-gray-100"
             >
               <h3 className="font-semibold text-gray-800 mb-1">
                 {service.title}
@@ -206,7 +206,7 @@ export default function RepairPage() {
       </div>
 
       {/* Repair request form */}
-      <div className="bg-white border rounded-lg p-6 shadow-sm">
+      <div className="bg-white border border-gray-200 rounded-lg p-6">
         <h2 className="text-xl font-semibold text-gray-900 mb-6">
           Gửi yêu cầu sửa chữa
         </h2>
@@ -233,7 +233,7 @@ export default function RepairPage() {
                 id="customer_name"
                 name="customer_name"
                 maxLength={100}
-                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                className={`w-full px-3 py-2 border rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                   fieldErrors.customer_name
                     ? "border-red-500"
                     : "border-gray-300"
@@ -260,7 +260,7 @@ export default function RepairPage() {
                 id="customer_phone"
                 name="customer_phone"
                 maxLength={10}
-                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                className={`w-full px-3 py-2 border rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                   fieldErrors.customer_phone
                     ? "border-red-500"
                     : "border-gray-300"
@@ -287,7 +287,7 @@ export default function RepairPage() {
                 id="device_model"
                 name="device_model"
                 maxLength={100}
-                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                className={`w-full px-3 py-2 border rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                   fieldErrors.device_model
                     ? "border-red-500"
                     : "border-gray-300"
@@ -314,7 +314,7 @@ export default function RepairPage() {
                 name="issue_description"
                 rows={4}
                 maxLength={1000}
-                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-vertical ${
+                className={`w-full px-3 py-2 border rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-vertical ${
                   fieldErrors.issue_description
                     ? "border-red-500"
                     : "border-gray-300"
@@ -366,7 +366,7 @@ export default function RepairPage() {
               )}
 
               {selectedFiles.length < MAX_FILE_COUNT && (
-                <label className="flex items-center justify-center gap-2 p-4 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-blue-400 hover:bg-blue-50 transition-colors">
+                <label className="flex items-center justify-center gap-2 p-4 border border-gray-300 rounded-lg cursor-pointer hover:border-blue-400 hover:bg-gray-100 transition-colors">
                   <Upload className="w-5 h-5 text-gray-400" />
                   <span className="text-sm text-gray-600">
                     Chọn ảnh để tải lên

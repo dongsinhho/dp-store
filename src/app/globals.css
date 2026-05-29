@@ -38,6 +38,10 @@
     background-color: #1e293b !important;
   }
 
+  .bg-blue-50 {
+    background-color: #172554 !important;
+  }
+
   .bg-black {
     background-color: #020617 !important;
   }
@@ -69,6 +73,10 @@
 
   .border-gray-100 {
     border-color: #1f2937 !important;
+  }
+
+  .border-t {
+    border-color: #334155 !important;
   }
 
   .hover\:bg-gray-50:hover {
