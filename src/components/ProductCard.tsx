@@ -14,6 +14,19 @@ export function formatPrice(price: number): string {
 }
 
 /**
+ * Calculate discount percentage from original and current price.
+ */
+export function calculateDiscountPercent(
+  originalPrice: number,
+  currentPrice: number
+): number {
+  if (originalPrice <= 0 || currentPrice <= 0 || originalPrice <= currentPrice) {
+    return 0
+  }
+  return Math.round(((originalPrice - currentPrice) / originalPrice) * 100)
+}
+
+/**
  * Get the Pocketbase file URL for a product image.
  */
 function getImageUrl(product: Product, filename: string): string {
@@ -28,76 +41,89 @@ export default function ProductCard({ product }: ProductCardProps) {
     : "/placeholder-product.png"
 
   const hasDiscount =
-    product.original_price && product.original_price > product.price
+    product.original_price != null && product.original_price > product.price
   const discountPercent = hasDiscount
-    ? Math.round(
-        ((product.original_price! - product.price) / product.original_price!) *
-          100
-      )
+    ? calculateDiscountPercent(product.original_price!, product.price)
     : 0
 
   return (
     <Link
       href={`/san-pham/${product.slug}`}
-      className="group block rounded-lg border border-gray-200 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+      className="group relative block rounded-[8px] bg-white overflow-hidden shadow-subtle hover:shadow-elevated transition-shadow duration-200 will-change-[box-shadow]"
     >
-      <div className="relative aspect-square overflow-hidden bg-gray-100">
+      {/* Image Container - Square aspect ratio */}
+      <div className="relative aspect-square overflow-hidden rounded-t-[8px] bg-neutral-100">
         <Image
           src={imageUrl}
           alt={product.name}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-          className="object-cover group-hover:scale-105 transition-transform duration-300"
+          className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105 will-change-transform"
         />
+
+        {/* Discount Badge - Top Left */}
         {hasDiscount && (
-          <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded">
+          <span className="absolute top-2 left-2 bg-error text-white text-xs font-semibold px-2 py-1 rounded-sm z-10">
             -{discountPercent}%
           </span>
         )}
-        {product.condition === "used" && (
-          <span className="absolute top-2 right-2 bg-yellow-500 text-white text-xs font-semibold px-2 py-1 rounded">
-            Đã qua sử dụng
+
+        {/* Hover Overlay with "Xem chi tiết" button */}
+        <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">
+          <span className="px-4 py-2 bg-white text-neutral-800 text-sm font-medium rounded-md shadow-medium hover:bg-neutral-50 transition-colors">
+            Xem chi tiết
           </span>
-        )}
+        </div>
       </div>
 
+      {/* Content */}
       <div className="p-3 sm:p-4">
-        <h3 className="text-sm sm:text-base font-medium text-gray-900 line-clamp-2 min-h-[2.5rem]">
+        {/* Product Name - Max 2 lines */}
+        <h3 className="text-sm sm:text-base font-medium text-neutral-900 line-clamp-2 min-h-[2.5rem]">
           {product.name}
         </h3>
 
+        {/* Price Section */}
         <div className="mt-2 flex items-baseline gap-2">
-          <span className="text-base sm:text-lg font-bold text-red-600">
+          <span className="text-base sm:text-lg font-bold text-primary">
             {formatPrice(product.price)}
           </span>
           {hasDiscount && (
-            <span className="text-xs sm:text-sm text-gray-400 line-through">
+            <span className="text-xs sm:text-sm text-neutral-400 line-through">
               {formatPrice(product.original_price!)}
             </span>
           )}
         </div>
 
+        {/* Attribute Tags - Storage, Color, Battery Health */}
         <div className="mt-2 flex flex-wrap gap-1">
-          <span className="inline-block text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">
-            {product.storage}
-          </span>
-          <span className="inline-block text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">
-            {product.color}
-          </span>
+          {product.storage && (
+            <span className="inline-block text-xs bg-neutral-100 text-neutral-600 px-2 py-0.5 rounded-sm">
+              {product.storage}
+            </span>
+          )}
+          {product.color && (
+            <span className="inline-block text-xs bg-neutral-100 text-neutral-600 px-2 py-0.5 rounded-sm">
+              {product.color}
+            </span>
+          )}
           {product.condition === "used" && product.battery_health != null && (
-            <span className="inline-block text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">
-              Pin {product.battery_health}%
+            <span className="inline-block text-xs bg-neutral-100 text-neutral-600 px-2 py-0.5 rounded-sm">
+              🔋 Pin {product.battery_health}%
             </span>
           )}
         </div>
 
-        {product.stock <= 3 && product.stock > 0 && (
-          <p className="mt-2 text-xs text-orange-600">
+        {/* Stock Warning */}
+        {product.stock > 0 && product.stock <= 3 && (
+          <p className="mt-2 text-xs text-orange-500 font-medium">
             Chỉ còn {product.stock} sản phẩm
           </p>
         )}
         {product.stock === 0 && (
-          <p className="mt-2 text-xs text-red-600 font-medium">Hết hàng</p>
+          <p className="mt-2 text-xs font-semibold text-error">
+            Hết hàng
+          </p>
         )}
       </div>
     </Link>

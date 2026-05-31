@@ -179,7 +179,9 @@ describe("ProductFilters", () => {
     mockSearchParams.set("condition", "new")
     render(<ProductFilters />)
 
-    const newButton = screen.getByText("Mới")
-    expect(newButton.className).toContain("bg-blue-600")
+    const newButtons = screen.getAllByText("Mới")
+    // The first match is the condition toggle button
+    const conditionButton = newButtons[0]
+    expect(conditionButton.className).toContain("bg-[var(--color-primary)]")
   })
 })

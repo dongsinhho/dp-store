@@ -96,15 +96,17 @@ export default async function ProductDetailPage({
     : "/placeholder-product.png"
 
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+    <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
       {/* Breadcrumb / Back link */}
-      <Link
-        href="/san-pham"
-        className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-blue-600 mb-6 transition-colors"
-      >
-        <ArrowLeft className="w-4 h-4" />
-        Quay lại danh sách sản phẩm
-      </Link>
+      <nav aria-label="Breadcrumb">
+        <Link
+          href="/san-pham"
+          className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-blue-600 mb-6 transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" aria-hidden="true" />
+          Quay lại danh sách sản phẩm
+        </Link>
+      </nav>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
         {/* Image Gallery */}
@@ -219,6 +221,6 @@ export default async function ProductDetailPage({
           )}
         </div>
       </div>
-    </main>
+    </article>
   )
 }

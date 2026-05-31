@@ -34,7 +34,7 @@ export default async function AdminProductEditPage({
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">
+      <h1 className="text-2xl font-bold text-neutral-900 mb-6">
         {isNew ? "Thêm sản phẩm mới" : "Chỉnh sửa sản phẩm"}
       </h1>
       <ProductForm

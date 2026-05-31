@@ -85,23 +85,23 @@ export default function ProductForm({ product, categories, isNew }: ProductFormP
     <div className="max-w-3xl">
       <Link
         href="/admin/san-pham"
-        className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 mb-6"
+        className="inline-flex items-center gap-2 text-sm text-neutral-600 hover:text-neutral-900 mb-6"
       >
         <ArrowLeft className="w-4 h-4" />
         Quay lại danh sách
       </Link>
 
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md mb-6">
+        <div className="bg-red-50 border border-red-200 text-error px-4 py-3 rounded-sm mb-6">
           {error}
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 rounded-lg shadow">
+      <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 rounded-md shadow-subtle">
         {/* Name */}
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-            Tên sản phẩm <span className="text-red-500">*</span>
+          <label htmlFor="name" className="block text-sm font-medium text-neutral-700 mb-1">
+            Tên sản phẩm <span className="text-error">*</span>
           </label>
           <input
             id="name"
@@ -111,23 +111,23 @@ export default function ProductForm({ product, categories, isNew }: ProductFormP
             onChange={(e) => setName(e.target.value)}
             required
             maxLength={200}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-subtle focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
             placeholder="iPhone 15 Pro Max 256GB"
           />
           {fieldErrors.name && (
-            <p className="mt-1 text-sm text-red-600">{fieldErrors.name}</p>
+            <p className="mt-1 text-sm text-error">{fieldErrors.name}</p>
           )}
           {name && (
-            <p className="mt-1 text-sm text-gray-500">
-              Slug: <code className="bg-gray-100 px-1 rounded">{slugPreview}</code>
+            <p className="mt-1 text-sm text-neutral-500">
+              Slug: <code className="bg-neutral-100 px-1 rounded">{slugPreview}</code>
             </p>
           )}
         </div>
 
         {/* Category */}
         <div>
-          <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">
-            Danh mục <span className="text-red-500">*</span>
+          <label htmlFor="category" className="block text-sm font-medium text-neutral-700 mb-1">
+            Danh mục <span className="text-error">*</span>
           </label>
           {categories.length > 0 ? (
             <select
@@ -136,7 +136,7 @@ export default function ProductForm({ product, categories, isNew }: ProductFormP
               value={category}
               onChange={(e) => setCategory(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-subtle focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
             >
               <option value="">Chọn danh mục</option>
               {categories.map((cat) => (
@@ -153,26 +153,26 @@ export default function ProductForm({ product, categories, isNew }: ProductFormP
               value={category}
               onChange={(e) => setCategory(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-subtle focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
               placeholder="ID danh mục"
             />
           )}
           {fieldErrors.category && (
-            <p className="mt-1 text-sm text-red-600">{fieldErrors.category}</p>
+            <p className="mt-1 text-sm text-error">{fieldErrors.category}</p>
           )}
         </div>
 
         {/* Condition */}
         <div>
-          <label htmlFor="condition" className="block text-sm font-medium text-gray-700 mb-1">
-            Tình trạng <span className="text-red-500">*</span>
+          <label htmlFor="condition" className="block text-sm font-medium text-neutral-700 mb-1">
+            Tình trạng <span className="text-error">*</span>
           </label>
           <select
             id="condition"
             name="condition"
             value={condition}
             onChange={(e) => setCondition(e.target.value as "new" | "used")}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-subtle focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
           >
             <option value="new">Mới</option>
             <option value="used">Cũ</option>
@@ -182,8 +182,8 @@ export default function ProductForm({ product, categories, isNew }: ProductFormP
         {/* Price and Original Price */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-1">
-              Giá bán (VND) <span className="text-red-500">*</span>
+            <label htmlFor="price" className="block text-sm font-medium text-neutral-700 mb-1">
+              Giá bán (VND) <span className="text-error">*</span>
             </label>
             <input
               id="price"
@@ -194,15 +194,15 @@ export default function ProductForm({ product, categories, isNew }: ProductFormP
               required
               min={1}
               max={999999999}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-subtle focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
               placeholder="25000000"
             />
             {fieldErrors.price && (
-              <p className="mt-1 text-sm text-red-600">{fieldErrors.price}</p>
+              <p className="mt-1 text-sm text-error">{fieldErrors.price}</p>
             )}
           </div>
           <div>
-            <label htmlFor="original_price" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="original_price" className="block text-sm font-medium text-neutral-700 mb-1">
               Giá gốc (VND)
             </label>
             <input
@@ -213,7 +213,7 @@ export default function ProductForm({ product, categories, isNew }: ProductFormP
               onChange={(e) => setOriginalPrice(e.target.value)}
               min={1}
               max={999999999}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-subtle focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
               placeholder="30000000"
             />
           </div>
@@ -222,8 +222,8 @@ export default function ProductForm({ product, categories, isNew }: ProductFormP
         {/* Storage and Color */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label htmlFor="storage" className="block text-sm font-medium text-gray-700 mb-1">
-              Dung lượng <span className="text-red-500">*</span>
+            <label htmlFor="storage" className="block text-sm font-medium text-neutral-700 mb-1">
+              Dung lượng <span className="text-error">*</span>
             </label>
             <select
               id="storage"
@@ -231,7 +231,7 @@ export default function ProductForm({ product, categories, isNew }: ProductFormP
               value={storage}
               onChange={(e) => setStorage(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-subtle focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
             >
               <option value="">Chọn dung lượng</option>
               <option value="64GB">64GB</option>
@@ -241,12 +241,12 @@ export default function ProductForm({ product, categories, isNew }: ProductFormP
               <option value="1TB">1TB</option>
             </select>
             {fieldErrors.storage && (
-              <p className="mt-1 text-sm text-red-600">{fieldErrors.storage}</p>
+              <p className="mt-1 text-sm text-error">{fieldErrors.storage}</p>
             )}
           </div>
           <div>
-            <label htmlFor="color" className="block text-sm font-medium text-gray-700 mb-1">
-              Màu sắc <span className="text-red-500">*</span>
+            <label htmlFor="color" className="block text-sm font-medium text-neutral-700 mb-1">
+              Màu sắc <span className="text-error">*</span>
             </label>
             <input
               id="color"
@@ -255,11 +255,11 @@ export default function ProductForm({ product, categories, isNew }: ProductFormP
               value={color}
               onChange={(e) => setColor(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-subtle focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
               placeholder="Đen Titan"
             />
             {fieldErrors.color && (
-              <p className="mt-1 text-sm text-red-600">{fieldErrors.color}</p>
+              <p className="mt-1 text-sm text-error">{fieldErrors.color}</p>
             )}
           </div>
         </div>
@@ -267,8 +267,8 @@ export default function ProductForm({ product, categories, isNew }: ProductFormP
         {/* Battery Health (only for used) */}
         {condition === "used" && (
           <div>
-            <label htmlFor="battery_health" className="block text-sm font-medium text-gray-700 mb-1">
-              Sức khỏe pin (%) <span className="text-red-500">*</span>
+            <label htmlFor="battery_health" className="block text-sm font-medium text-neutral-700 mb-1">
+              Sức khỏe pin (%) <span className="text-error">*</span>
             </label>
             <input
               id="battery_health"
@@ -279,19 +279,19 @@ export default function ProductForm({ product, categories, isNew }: ProductFormP
               required
               min={0}
               max={100}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-subtle focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
               placeholder="85"
             />
             {fieldErrors.battery_health && (
-              <p className="mt-1 text-sm text-red-600">{fieldErrors.battery_health}</p>
+              <p className="mt-1 text-sm text-error">{fieldErrors.battery_health}</p>
             )}
           </div>
         )}
 
         {/* Stock */}
         <div>
-          <label htmlFor="stock" className="block text-sm font-medium text-gray-700 mb-1">
-            Tồn kho <span className="text-red-500">*</span>
+          <label htmlFor="stock" className="block text-sm font-medium text-neutral-700 mb-1">
+            Tồn kho <span className="text-error">*</span>
           </label>
           <input
             id="stock"
@@ -302,18 +302,18 @@ export default function ProductForm({ product, categories, isNew }: ProductFormP
             required
             min={0}
             max={9999}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-subtle focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
             placeholder="10"
           />
           {fieldErrors.stock && (
-            <p className="mt-1 text-sm text-red-600">{fieldErrors.stock}</p>
+            <p className="mt-1 text-sm text-error">{fieldErrors.stock}</p>
           )}
         </div>
 
         {/* Description */}
         <div>
-          <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
-            Mô tả <span className="text-red-500">*</span>
+          <label htmlFor="description" className="block text-sm font-medium text-neutral-700 mb-1">
+            Mô tả <span className="text-error">*</span>
           </label>
           <textarea
             id="description"
@@ -322,30 +322,30 @@ export default function ProductForm({ product, categories, isNew }: ProductFormP
             onChange={(e) => setDescription(e.target.value)}
             required
             rows={4}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-subtle focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
             placeholder="Mô tả chi tiết sản phẩm..."
           />
           {fieldErrors.description && (
-            <p className="mt-1 text-sm text-red-600">{fieldErrors.description}</p>
+            <p className="mt-1 text-sm text-error">{fieldErrors.description}</p>
           )}
         </div>
 
         {/* Images */}
         <div>
-          <label htmlFor="images" className="block text-sm font-medium text-gray-700 mb-1">
-            Hình ảnh <span className="text-red-500">*</span>
-            <span className="text-gray-500 font-normal"> (1-10 ảnh)</span>
+          <label htmlFor="images" className="block text-sm font-medium text-neutral-700 mb-1">
+            Hình ảnh <span className="text-error">*</span>
+            <span className="text-neutral-500 font-normal"> (1-10 ảnh)</span>
           </label>
 
           {!isNew && product?.images && Array.isArray(product.images) && (product.images as string[]).length > 0 ? (
             <div className="mb-2">
-              <p className="text-sm text-gray-500 mb-1">
+              <p className="text-sm text-neutral-500 mb-1">
                 Ảnh hiện tại: {(product.images as string[]).length} ảnh
               </p>
               <div className="flex flex-wrap gap-2">
                 {(product.images as string[]).map((img, idx) => (
                   <div key={idx} className="relative">
-                    <span className="inline-block px-2 py-1 bg-gray-100 text-xs text-gray-600 rounded">
+                    <span className="inline-block px-2 py-1 bg-neutral-100 text-xs text-neutral-600 rounded">
                       {img}
                     </span>
                     <input type="hidden" name="existing_images" value={img} />
@@ -361,13 +361,13 @@ export default function ProductForm({ product, categories, isNew }: ProductFormP
             type="file"
             accept="image/jpeg,image/png"
             multiple
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-subtle focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
           />
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-neutral-500">
             Chấp nhận JPG, PNG. {isNew ? "Tối thiểu 1 ảnh." : "Thêm ảnh mới (nếu cần)."}
           </p>
           {fieldErrors.images && (
-            <p className="mt-1 text-sm text-red-600">{fieldErrors.images}</p>
+            <p className="mt-1 text-sm text-error">{fieldErrors.images}</p>
           )}
         </div>
 
@@ -379,9 +379,9 @@ export default function ProductForm({ product, categories, isNew }: ProductFormP
             type="checkbox"
             checked={isActive}
             onChange={(e) => setIsActive(e.target.checked)}
-            className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+            className="h-4 w-4 text-primary border-neutral-300 rounded focus:ring-primary"
           />
-          <label htmlFor="is_active" className="text-sm font-medium text-gray-700">
+          <label htmlFor="is_active" className="text-sm font-medium text-neutral-700">
             Đang bán (hiển thị trên trang web)
           </label>
         </div>
@@ -389,11 +389,11 @@ export default function ProductForm({ product, categories, isNew }: ProductFormP
         <input type="hidden" name="is_active" value={String(isActive)} />
 
         {/* Submit */}
-        <div className="flex items-center gap-4 pt-4 border-t border-gray-200">
+        <div className="flex items-center gap-4 pt-4 border-t border-neutral-200">
           <button
             type="submit"
             disabled={isSubmitting}
-            className="inline-flex items-center gap-2 px-6 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-2 bg-primary text-primary-foreground font-medium rounded-sm hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             <Save className="w-4 h-4" />
             {isSubmitting
@@ -404,7 +404,7 @@ export default function ProductForm({ product, categories, isNew }: ProductFormP
           </button>
           <Link
             href="/admin/san-pham"
-            className="px-6 py-2 text-gray-700 font-medium rounded-md border border-gray-300 hover:bg-gray-50 transition-colors"
+            className="px-6 py-2 text-neutral-700 font-medium rounded-sm border border-neutral-300 hover:bg-neutral-50 transition-colors"
           >
             Hủy
           </Link>

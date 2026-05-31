@@ -198,8 +198,8 @@ export default function AdminTradeInDetailPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <RefreshCw className="w-6 h-6 animate-spin text-blue-600" />
-        <span className="ml-2 text-gray-600">Đang tải...</span>
+        <RefreshCw className="w-6 h-6 animate-spin text-primary" />
+        <span className="ml-2 text-neutral-600">Đang tải...</span>
       </div>
     )
   }
@@ -207,10 +207,10 @@ export default function AdminTradeInDetailPage() {
   if (error || !record) {
     return (
       <div className="text-center py-12">
-        <p className="text-red-600 mb-4">{error || "Không tìm thấy yêu cầu"}</p>
+        <p className="text-error mb-4">{error || "Không tìm thấy yêu cầu"}</p>
         <Link
           href="/admin/thu-cu"
-          className="text-blue-600 hover:text-blue-800"
+          className="text-primary hover:text-blue-800"
         >
           ← Quay lại danh sách
         </Link>
@@ -227,12 +227,12 @@ export default function AdminTradeInDetailPage() {
       <div className="flex items-center gap-4 mb-6">
         <Link
           href="/admin/thu-cu"
-          className="flex items-center gap-1 text-gray-600 hover:text-gray-900"
+          className="flex items-center gap-1 text-neutral-600 hover:text-neutral-900"
         >
           <ArrowLeft className="w-4 h-4" />
           Quay lại
         </Link>
-        <h1 className="text-2xl font-bold text-gray-900">
+        <h1 className="text-2xl font-bold text-neutral-900">
           Chi tiết yêu cầu thu cũ
         </h1>
         <span
@@ -244,33 +244,33 @@ export default function AdminTradeInDetailPage() {
 
       {/* Error message */}
       {actionError && (
-        <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+        <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-sm text-error text-sm">
           {actionError}
         </div>
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Customer Info */}
-        <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+        <div className="bg-white rounded-md shadow-subtle p-6">
+          <h2 className="text-lg font-semibold text-neutral-900 mb-4">
             Thông tin khách hàng
           </h2>
           <dl className="space-y-3">
             <div>
-              <dt className="text-sm text-gray-500">Họ tên</dt>
-              <dd className="text-sm font-medium text-gray-900">
+              <dt className="text-sm text-neutral-500">Họ tên</dt>
+              <dd className="text-sm font-medium text-neutral-900">
                 {record.customer_name}
               </dd>
             </div>
             <div>
-              <dt className="text-sm text-gray-500">Số điện thoại</dt>
-              <dd className="text-sm font-medium text-gray-900">
+              <dt className="text-sm text-neutral-500">Số điện thoại</dt>
+              <dd className="text-sm font-medium text-neutral-900">
                 {record.customer_phone}
               </dd>
             </div>
             <div>
-              <dt className="text-sm text-gray-500">Ngày gửi</dt>
-              <dd className="text-sm font-medium text-gray-900">
+              <dt className="text-sm text-neutral-500">Ngày gửi</dt>
+              <dd className="text-sm font-medium text-neutral-900">
                 {new Date(record.created).toLocaleString("vi-VN")}
               </dd>
             </div>
@@ -278,33 +278,33 @@ export default function AdminTradeInDetailPage() {
         </div>
 
         {/* Old Device Info */}
-        <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+        <div className="bg-white rounded-md shadow-subtle p-6">
+          <h2 className="text-lg font-semibold text-neutral-900 mb-4">
             Thông tin máy cũ
           </h2>
           <dl className="space-y-3">
             <div>
-              <dt className="text-sm text-gray-500">Model</dt>
-              <dd className="text-sm font-medium text-gray-900">
+              <dt className="text-sm text-neutral-500">Model</dt>
+              <dd className="text-sm font-medium text-neutral-900">
                 {record.old_device_model}
               </dd>
             </div>
             <div>
-              <dt className="text-sm text-gray-500">Dung lượng</dt>
-              <dd className="text-sm font-medium text-gray-900">
+              <dt className="text-sm text-neutral-500">Dung lượng</dt>
+              <dd className="text-sm font-medium text-neutral-900">
                 {record.old_device_storage}
               </dd>
             </div>
             <div>
-              <dt className="text-sm text-gray-500">Tình trạng</dt>
-              <dd className="text-sm text-gray-900">
+              <dt className="text-sm text-neutral-500">Tình trạng</dt>
+              <dd className="text-sm text-neutral-900">
                 {record.old_device_condition}
               </dd>
             </div>
             {record.old_device_battery !== undefined && record.old_device_battery !== null && (
               <div>
-                <dt className="text-sm text-gray-500">Pin</dt>
-                <dd className="text-sm font-medium text-gray-900">
+                <dt className="text-sm text-neutral-500">Pin</dt>
+                <dd className="text-sm font-medium text-neutral-900">
                   {record.old_device_battery}%
                 </dd>
               </div>
@@ -314,7 +314,7 @@ export default function AdminTradeInDetailPage() {
           {/* Old device images */}
           {record.old_device_images && record.old_device_images.length > 0 && (
             <div className="mt-4">
-              <dt className="text-sm text-gray-500 mb-2">Ảnh máy cũ</dt>
+              <dt className="text-sm text-neutral-500 mb-2">Ảnh máy cũ</dt>
               <div className="flex gap-2 flex-wrap">
                 {record.old_device_images.map((img, idx) => (
                   <Image
@@ -323,7 +323,7 @@ export default function AdminTradeInDetailPage() {
                     alt={`Ảnh máy cũ ${idx + 1}`}
                     width={80}
                     height={80}
-                    className="w-20 h-20 object-cover rounded border"
+                    className="w-20 h-20 object-cover rounded-sm border"
                     unoptimized
                   />
                 ))}
@@ -333,53 +333,53 @@ export default function AdminTradeInDetailPage() {
         </div>
 
         {/* New Product Info */}
-        <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+        <div className="bg-white rounded-md shadow-subtle p-6">
+          <h2 className="text-lg font-semibold text-neutral-900 mb-4">
             Sản phẩm muốn đổi
           </h2>
           {record.expand?.new_product ? (
             <dl className="space-y-3">
               <div>
-                <dt className="text-sm text-gray-500">Tên sản phẩm</dt>
-                <dd className="text-sm font-medium text-gray-900">
+                <dt className="text-sm text-neutral-500">Tên sản phẩm</dt>
+                <dd className="text-sm font-medium text-neutral-900">
                   {record.expand.new_product.name}
                 </dd>
               </div>
               <div>
-                <dt className="text-sm text-gray-500">Giá bán</dt>
-                <dd className="text-sm font-medium text-gray-900">
+                <dt className="text-sm text-neutral-500">Giá bán</dt>
+                <dd className="text-sm font-medium text-neutral-900">
                   {record.expand.new_product.price.toLocaleString("vi-VN")}đ
                 </dd>
               </div>
               <div>
-                <dt className="text-sm text-gray-500">Tình trạng</dt>
-                <dd className="text-sm font-medium text-gray-900">
+                <dt className="text-sm text-neutral-500">Tình trạng</dt>
+                <dd className="text-sm font-medium text-neutral-900">
                   {record.expand.new_product.condition === "new" ? "Mới" : "Cũ"}
                 </dd>
               </div>
               <div>
-                <dt className="text-sm text-gray-500">Dung lượng</dt>
-                <dd className="text-sm font-medium text-gray-900">
+                <dt className="text-sm text-neutral-500">Dung lượng</dt>
+                <dd className="text-sm font-medium text-neutral-900">
                   {record.expand.new_product.storage}
                 </dd>
               </div>
               <div>
-                <dt className="text-sm text-gray-500">Màu sắc</dt>
-                <dd className="text-sm font-medium text-gray-900">
+                <dt className="text-sm text-neutral-500">Màu sắc</dt>
+                <dd className="text-sm font-medium text-neutral-900">
                   {record.expand.new_product.color}
                 </dd>
               </div>
             </dl>
           ) : (
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-neutral-500">
               Khách hàng chưa chọn sản phẩm mới
             </p>
           )}
         </div>
 
         {/* Evaluation Form */}
-        <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+        <div className="bg-white rounded-md shadow-subtle p-6">
+          <h2 className="text-lg font-semibold text-neutral-900 mb-4">
             Định giá & Xử lý
           </h2>
 
@@ -388,7 +388,7 @@ export default function AdminTradeInDetailPage() {
             <div>
               <label
                 htmlFor="trade_in_value"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-neutral-700 mb-1"
               >
                 Giá trị thu cũ (VND)
               </label>
@@ -399,7 +399,7 @@ export default function AdminTradeInDetailPage() {
                 value={tradeInValue}
                 onChange={(e) => setTradeInValue(e.target.value)}
                 placeholder="Nhập giá trị thu cũ..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                className="w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-subtle focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-sm"
                 disabled={
                   currentStatus !== TradeInStatus.Pending && currentStatus !== TradeInStatus.Evaluated
                 }
@@ -409,15 +409,15 @@ export default function AdminTradeInDetailPage() {
             {/* Auto-calculated price difference */}
             {record.expand?.new_product && (
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-neutral-700 mb-1">
                   Số tiền bù thêm (tự động tính)
                 </label>
-                <div className="px-3 py-2 bg-gray-50 border border-gray-200 rounded-md text-sm">
+                <div className="px-3 py-2 bg-neutral-50 border border-neutral-200 rounded-sm text-sm">
                   {calculatedPriceDifference !== null ? (
                     <span
                       className={
                         calculatedPriceDifference > 0
-                          ? "text-red-600 font-medium"
+                          ? "text-error font-medium"
                           : "text-green-600 font-medium"
                       }
                     >
@@ -429,7 +429,7 @@ export default function AdminTradeInDetailPage() {
                     </span>
                   ) : record.price_difference !== null &&
                     record.price_difference !== undefined ? (
-                    <span className="text-gray-700">
+                    <span className="text-neutral-700">
                       {record.price_difference > 0
                         ? `Khách bù thêm: ${record.price_difference.toLocaleString("vi-VN")}đ`
                         : record.price_difference === 0
@@ -437,12 +437,12 @@ export default function AdminTradeInDetailPage() {
                           : `Hoàn lại khách: ${Math.abs(record.price_difference).toLocaleString("vi-VN")}đ`}
                     </span>
                   ) : (
-                    <span className="text-gray-400">
+                    <span className="text-neutral-400">
                       Nhập giá trị thu cũ để tính
                     </span>
                   )}
                 </div>
-                <p className="mt-1 text-xs text-gray-500">
+                <p className="mt-1 text-xs text-neutral-500">
                   Công thức: Giá sản phẩm mới ({record.expand.new_product.price.toLocaleString("vi-VN")}đ) - Giá thu cũ
                 </p>
               </div>
@@ -450,7 +450,7 @@ export default function AdminTradeInDetailPage() {
 
             {/* Saved trade_in_value display */}
             {record.trade_in_value && currentStatus !== TradeInStatus.Pending && (
-              <div className="p-3 bg-blue-50 border border-blue-200 rounded-md">
+              <div className="p-3 bg-blue-50 border border-blue-200 rounded-sm">
                 <p className="text-sm text-blue-800">
                   <strong>Đã định giá:</strong>{" "}
                   {record.trade_in_value.toLocaleString("vi-VN")}đ
@@ -473,7 +473,7 @@ export default function AdminTradeInDetailPage() {
             <div>
               <label
                 htmlFor="admin_notes"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-neutral-700 mb-1"
               >
                 Ghi chú admin
               </label>
@@ -483,7 +483,7 @@ export default function AdminTradeInDetailPage() {
                 onChange={(e) => setAdminNotes(e.target.value)}
                 placeholder="Ghi chú nội bộ..."
                 rows={3}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                className="w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-subtle focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-sm"
               />
             </div>
           </div>
@@ -492,8 +492,8 @@ export default function AdminTradeInDetailPage() {
 
       {/* Status Update Actions */}
       {validNextStatuses.length > 0 && (
-        <div className="mt-6 bg-white rounded-lg shadow p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+        <div className="mt-6 bg-white rounded-md shadow-subtle p-6">
+          <h2 className="text-lg font-semibold text-neutral-900 mb-4">
             Cập nhật trạng thái
           </h2>
           <div className="flex flex-wrap gap-3">
@@ -504,10 +504,10 @@ export default function AdminTradeInDetailPage() {
                   key={nextStatus}
                   onClick={() => handleStatusUpdate(nextStatus)}
                   disabled={actionLoading}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
+                  className={`px-4 py-2 rounded-sm text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
                     isCancelled
                       ? "bg-red-600 text-white hover:bg-red-700"
-                      : "bg-blue-600 text-white hover:bg-blue-700"
+                      : "bg-primary text-primary-foreground hover:opacity-90"
                   }`}
                 >
                   {actionLoading ? (
@@ -523,7 +523,7 @@ export default function AdminTradeInDetailPage() {
             })}
           </div>
           {currentStatus === TradeInStatus.Pending && (
-            <p className="mt-3 text-xs text-gray-500">
+            <p className="mt-3 text-xs text-neutral-500">
               * Để chuyển sang &quot;Đã định giá&quot;, vui lòng nhập giá trị thu cũ ở trên.
             </p>
           )}
@@ -531,7 +531,7 @@ export default function AdminTradeInDetailPage() {
       )}
 
       {/* Timeline / Updated info */}
-      <div className="mt-6 text-sm text-gray-500">
+      <div className="mt-6 text-sm text-neutral-500">
         <p>Cập nhật lần cuối: {new Date(record.updated).toLocaleString("vi-VN")}</p>
       </div>
     </div>

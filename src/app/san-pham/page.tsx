@@ -1,7 +1,9 @@
+import { Suspense } from "react"
 import { Metadata } from "next"
 import { getProducts } from "@/lib/products"
 import ProductGrid from "@/components/ProductGrid"
 import Pagination from "@/components/Pagination"
+import { ProductGridSkeleton } from "@/components/skeletons"
 
 export const revalidate = 60
 
@@ -23,7 +25,11 @@ interface ProductsPageProps {
   }
 }
 
-export default async function ProductsPage({ searchParams }: ProductsPageProps) {
+async function ProductListingContent({
+  searchParams,
+}: {
+  searchParams: ProductsPageProps["searchParams"]
+}) {
   const params = searchParams
 
   const page = Math.max(1, Number(params.page) || 1)
@@ -58,9 +64,9 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   }
 
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+    <>
       <div className="mb-6 sm:mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
+        <h1 id="products-page-heading" className="text-2xl sm:text-3xl font-bold text-gray-900">
           Sản phẩm iPhone
         </h1>
         <p className="mt-1 text-sm text-gray-500">
@@ -81,6 +87,28 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
         basePath="/san-pham"
         searchParams={paginationParams}
       />
-    </main>
+    </>
+  )
+}
+
+function ProductListingFallback() {
+  return (
+    <>
+      <div className="mb-6 sm:mb-8">
+        <div className="h-8 sm:h-9 bg-neutral-200 rounded w-56 animate-pulse" />
+        <div className="mt-2 h-4 bg-neutral-100 rounded w-40 animate-pulse" />
+      </div>
+      <ProductGridSkeleton count={12} />
+    </>
+  )
+}
+
+export default function ProductsPage({ searchParams }: ProductsPageProps) {
+  return (
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8" aria-labelledby="products-page-heading">
+      <Suspense fallback={<ProductListingFallback />}>
+        <ProductListingContent searchParams={searchParams} />
+      </Suspense>
+    </section>
   )
 }

@@ -46,16 +46,16 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8">
+    <div className="min-h-screen flex items-center justify-center bg-neutral-100">
+      <div className="w-full max-w-md bg-white rounded-md shadow-medium p-8">
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-gray-900">Quản trị viên</h1>
-          <p className="text-gray-600 mt-2">Đăng nhập để truy cập trang quản trị</p>
+          <h1 className="text-2xl font-bold text-neutral-900">Quản trị viên</h1>
+          <p className="text-neutral-600 mt-2">Đăng nhập để truy cập trang quản trị</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm">
+            <div className="bg-red-50 border border-red-200 text-error px-4 py-3 rounded-sm text-sm">
               {error}
             </div>
           )}
@@ -63,7 +63,7 @@ export default function AdminLoginPage() {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-neutral-700 mb-1"
             >
               Email
             </label>
@@ -74,7 +74,7 @@ export default function AdminLoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               required
               autoComplete="email"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-subtle focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
               placeholder="admin@example.com"
             />
           </div>
@@ -82,7 +82,7 @@ export default function AdminLoginPage() {
           <div>
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-neutral-700 mb-1"
             >
               Mật khẩu
             </label>
@@ -93,7 +93,7 @@ export default function AdminLoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               required
               autoComplete="current-password"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-subtle focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
               placeholder="••••••••"
             />
           </div>
@@ -101,7 +101,7 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full py-2 px-4 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="w-full py-2 px-4 bg-primary text-primary-foreground font-medium rounded-sm hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             {isLoading ? "Đang đăng nhập..." : "Đăng nhập"}
           </button>

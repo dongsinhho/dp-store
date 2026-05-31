@@ -66,10 +66,10 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
     console.error("Failed to fetch order:", err)
     return (
       <div>
-        <h1 className="text-2xl font-bold text-gray-900 mb-6">
+        <h1 className="text-2xl font-bold text-neutral-900 mb-6">
           Đơn hàng không tồn tại
         </h1>
-        <p className="text-gray-500">
+        <p className="text-neutral-500">
           Không tìm thấy đơn hàng với ID: {params.id}
         </p>
       </div>
@@ -79,7 +79,7 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
   if (!order) {
     return (
       <div>
-        <h1 className="text-2xl font-bold text-gray-900 mb-6">
+        <h1 className="text-2xl font-bold text-neutral-900 mb-6">
           Đơn hàng không tồn tại
         </h1>
       </div>
@@ -94,14 +94,14 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
       <div className="mb-6">
         <a
           href="/admin/don-hang"
-          className="text-blue-600 hover:text-blue-800 text-sm"
+          className="text-primary hover:text-blue-800 text-sm"
         >
           ← Quay lại danh sách
         </a>
       </div>
 
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">
+        <h1 className="text-2xl font-bold text-neutral-900">
           Chi tiết đơn hàng
         </h1>
         <span
@@ -115,40 +115,40 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Customer Info */}
-        <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+        <div className="bg-white rounded-md shadow-subtle p-6">
+          <h2 className="text-lg font-semibold text-neutral-900 mb-4">
             Thông tin khách hàng
           </h2>
           <dl className="space-y-3">
             <div>
-              <dt className="text-sm text-gray-500">Họ tên</dt>
-              <dd className="text-sm font-medium text-gray-900">
+              <dt className="text-sm text-neutral-500">Họ tên</dt>
+              <dd className="text-sm font-medium text-neutral-900">
                 {order.customer_name}
               </dd>
             </div>
             <div>
-              <dt className="text-sm text-gray-500">Số điện thoại</dt>
-              <dd className="text-sm font-medium text-gray-900">
+              <dt className="text-sm text-neutral-500">Số điện thoại</dt>
+              <dd className="text-sm font-medium text-neutral-900">
                 {order.customer_phone}
               </dd>
             </div>
             {order.customer_email && (
               <div>
-                <dt className="text-sm text-gray-500">Email</dt>
-                <dd className="text-sm font-medium text-gray-900">
+                <dt className="text-sm text-neutral-500">Email</dt>
+                <dd className="text-sm font-medium text-neutral-900">
                   {order.customer_email}
                 </dd>
               </div>
             )}
             <div>
-              <dt className="text-sm text-gray-500">Địa chỉ</dt>
-              <dd className="text-sm font-medium text-gray-900">
+              <dt className="text-sm text-neutral-500">Địa chỉ</dt>
+              <dd className="text-sm font-medium text-neutral-900">
                 {order.customer_address}
               </dd>
             </div>
             <div>
-              <dt className="text-sm text-gray-500">Thanh toán</dt>
-              <dd className="text-sm font-medium text-gray-900">
+              <dt className="text-sm text-neutral-500">Thanh toán</dt>
+              <dd className="text-sm font-medium text-neutral-900">
                 {order.payment_method === "cod"
                   ? "Thanh toán khi nhận hàng (COD)"
                   : "Chuyển khoản ngân hàng"}
@@ -156,8 +156,8 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
             </div>
             {order.notes && (
               <div>
-                <dt className="text-sm text-gray-500">Ghi chú</dt>
-                <dd className="text-sm font-medium text-gray-900">
+                <dt className="text-sm text-neutral-500">Ghi chú</dt>
+                <dd className="text-sm font-medium text-neutral-900">
                   {order.notes}
                 </dd>
               </div>
@@ -166,31 +166,31 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
         </div>
 
         {/* Order Items */}
-        <div className="bg-white rounded-lg shadow p-6 lg:col-span-2">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+        <div className="bg-white rounded-md shadow-subtle p-6 lg:col-span-2">
+          <h2 className="text-lg font-semibold text-neutral-900 mb-4">
             Sản phẩm đặt mua
           </h2>
-          <div className="divide-y divide-gray-200">
+          <div className="divide-y divide-neutral-200">
             {orderItems.map((item) => (
               <div key={item.id} className="py-3 flex justify-between items-center">
                 <div>
-                  <p className="text-sm font-medium text-gray-900">
+                  <p className="text-sm font-medium text-neutral-900">
                     {item.expand?.product?.name || `Sản phẩm #${item.product}`}
                   </p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-neutral-500">
                     Số lượng: {item.quantity} × {item.price.toLocaleString("vi-VN")}đ
                   </p>
                 </div>
-                <p className="text-sm font-medium text-gray-900">
+                <p className="text-sm font-medium text-neutral-900">
                   {(item.price * item.quantity).toLocaleString("vi-VN")}đ
                 </p>
               </div>
             ))}
           </div>
-          <div className="border-t border-gray-200 pt-3 mt-3">
+          <div className="border-t border-neutral-200 pt-3 mt-3">
             <div className="flex justify-between items-center">
-              <p className="text-base font-semibold text-gray-900">Tổng cộng</p>
-              <p className="text-base font-semibold text-gray-900">
+              <p className="text-base font-semibold text-neutral-900">Tổng cộng</p>
+              <p className="text-base font-semibold text-neutral-900">
                 {order.total_amount.toLocaleString("vi-VN")}đ
               </p>
             </div>
@@ -199,12 +199,12 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
       </div>
 
       {/* Status Update Actions */}
-      <div className="mt-6 bg-white rounded-lg shadow p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">
+      <div className="mt-6 bg-white rounded-md shadow-subtle p-6">
+        <h2 className="text-lg font-semibold text-neutral-900 mb-4">
           Cập nhật trạng thái
         </h2>
         <div className="flex items-center gap-2 mb-4">
-          <span className="text-sm text-gray-500">Trạng thái hiện tại:</span>
+          <span className="text-sm text-neutral-500">Trạng thái hiện tại:</span>
           <span
             className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
               STATUS_COLORS[order.status] || "bg-gray-100 text-gray-800"
@@ -221,14 +221,14 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
             validNextStatuses={validNextStatuses}
           />
         ) : (
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-neutral-500">
             Đơn hàng đã ở trạng thái cuối cùng, không thể thay đổi.
           </p>
         )}
       </div>
 
       {/* Timestamps */}
-      <div className="mt-6 text-sm text-gray-500 flex gap-6">
+      <div className="mt-6 text-sm text-neutral-500 flex gap-6">
         <span>
           Ngày tạo: {new Date(order.created).toLocaleString("vi-VN")}
         </span>

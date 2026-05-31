@@ -32,7 +32,7 @@ export default function AdminLayout({
 
   // Authenticated admin gets the full dashboard layout
   return (
-    <div className="min-h-screen flex bg-gray-50">
+    <div className="min-h-screen flex bg-neutral-50">
       <AdminSidebar />
       <main className="flex-1 ml-64 p-8">{children}</main>
     </div>

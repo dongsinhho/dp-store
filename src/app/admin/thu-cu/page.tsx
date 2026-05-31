@@ -45,84 +45,84 @@ export default async function AdminTradeInListPage() {
   return (
     <div>
       <div className="flex items-center gap-3 mb-6">
-        <ArrowLeftRight className="w-7 h-7 text-blue-600" />
-        <h1 className="text-2xl font-bold text-gray-900">
+        <ArrowLeftRight className="w-7 h-7 text-primary" />
+        <h1 className="text-2xl font-bold text-neutral-900">
           Quản lý Thu cũ đổi mới
         </h1>
       </div>
 
-      <div className="bg-white rounded-lg shadow overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-200">
-          <p className="text-sm text-gray-600">
+      <div className="bg-white rounded-md shadow-subtle overflow-hidden">
+        <div className="px-6 py-4 border-b border-neutral-200">
+          <p className="text-sm text-neutral-600">
             Tổng cộng: {records.totalItems} yêu cầu
           </p>
         </div>
 
         {records.items.length === 0 ? (
-          <div className="px-6 py-12 text-center text-gray-500">
+          <div className="px-6 py-12 text-center text-neutral-500">
             Chưa có yêu cầu thu cũ đổi mới nào.
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50">
+              <thead className="bg-neutral-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
                     Khách hàng
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
                     Máy cũ
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
                     Máy mới
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
                     Giá thu
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
                     Trạng thái
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
                     Ngày tạo
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
                     Thao tác
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-neutral-200">
                 {records.items.map((record) => {
                   const status = record.status as string
                   const expand = record.expand as Record<string, unknown> | undefined
                   const newProduct = expand?.new_product as Record<string, unknown> | undefined
 
                   return (
-                    <tr key={record.id as string} className="hover:bg-gray-50">
+                    <tr key={record.id as string} className="hover:bg-neutral-50">
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">
+                        <div className="text-sm font-medium text-neutral-900">
                           {record.customer_name as string}
                         </div>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm text-neutral-500">
                           {record.customer_phone as string}
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">
+                        <div className="text-sm text-neutral-900">
                           {record.old_device_model as string}
                         </div>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm text-neutral-500">
                           {record.old_device_storage as string}
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-900">
                         {newProduct
                           ? (newProduct.name as string)
-                          : <span className="text-gray-400">Chưa chọn</span>}
+                          : <span className="text-neutral-400">Chưa chọn</span>}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-900">
                         {record.trade_in_value
                           ? `${(record.trade_in_value as number).toLocaleString("vi-VN")}đ`
-                          : <span className="text-gray-400">Chưa định giá</span>}
+                          : <span className="text-neutral-400">Chưa định giá</span>}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span
@@ -131,13 +131,13 @@ export default async function AdminTradeInListPage() {
                           {STATUS_LABELS[status] || status}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-500">
                         {new Date(record.created as string).toLocaleDateString("vi-VN")}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm">
                         <Link
                           href={`/admin/thu-cu/${record.id}`}
-                          className="text-blue-600 hover:text-blue-800 font-medium"
+                          className="text-primary hover:text-blue-800 font-medium"
                         >
                           Chi tiết
                         </Link>

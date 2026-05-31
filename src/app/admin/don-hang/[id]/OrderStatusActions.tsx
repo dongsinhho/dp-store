@@ -14,8 +14,8 @@ const STATUS_LABELS: Record<string, string> = {
 }
 
 const STATUS_BUTTON_COLORS: Record<string, string> = {
-  [OrderStatus.Confirmed]: "bg-blue-600 hover:bg-blue-700 text-white",
-  [OrderStatus.Shipping]: "bg-purple-600 hover:bg-purple-700 text-white",
+  [OrderStatus.Confirmed]: "bg-primary hover:opacity-90 text-primary-foreground",
+  [OrderStatus.Shipping]: "bg-secondary hover:opacity-90 text-secondary-foreground",
   [OrderStatus.Delivered]: "bg-green-600 hover:bg-green-700 text-white",
   [OrderStatus.Cancelled]: "bg-red-600 hover:bg-red-700 text-white",
 }
@@ -56,13 +56,13 @@ export default function OrderStatusActions({
   return (
     <div>
       {error && (
-        <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-md">
-          <p className="text-sm text-red-700">{error}</p>
+        <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-sm">
+          <p className="text-sm text-error">{error}</p>
         </div>
       )}
 
       {showConfirm && (
-        <div className="mb-4 p-4 bg-yellow-50 border border-yellow-200 rounded-md">
+        <div className="mb-4 p-4 bg-yellow-50 border border-yellow-200 rounded-sm">
           <p className="text-sm text-yellow-800 mb-3">
             {showConfirm === OrderStatus.Cancelled
               ? "Bạn có chắc muốn hủy đơn hàng? Tồn kho sẽ được hoàn lại."
@@ -72,14 +72,14 @@ export default function OrderStatusActions({
             <button
               onClick={() => handleStatusUpdate(showConfirm)}
               disabled={isLoading !== null}
-              className="px-3 py-1.5 text-sm font-medium bg-yellow-600 hover:bg-yellow-700 text-white rounded-md disabled:opacity-50"
+              className="px-3 py-1.5 text-sm font-medium bg-warning hover:opacity-90 text-white rounded-sm disabled:opacity-50"
             >
               {isLoading ? "Đang xử lý..." : "Xác nhận"}
             </button>
             <button
               onClick={() => setShowConfirm(null)}
               disabled={isLoading !== null}
-              className="px-3 py-1.5 text-sm font-medium bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-md disabled:opacity-50"
+              className="px-3 py-1.5 text-sm font-medium bg-neutral-200 hover:bg-neutral-300 text-neutral-700 rounded-sm disabled:opacity-50"
             >
               Hủy bỏ
             </button>
@@ -93,8 +93,8 @@ export default function OrderStatusActions({
             key={status}
             onClick={() => setShowConfirm(status)}
             disabled={isLoading !== null || showConfirm !== null}
-            className={`px-4 py-2 text-sm font-medium rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
-              STATUS_BUTTON_COLORS[status] || "bg-gray-600 hover:bg-gray-700 text-white"
+            className={`px-4 py-2 text-sm font-medium rounded-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
+              STATUS_BUTTON_COLORS[status] || "bg-neutral-600 hover:bg-neutral-700 text-white"
             }`}
           >
             {isLoading === status

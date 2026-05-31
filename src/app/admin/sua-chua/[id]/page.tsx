@@ -190,7 +190,7 @@ export default function AdminRepairDetailPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <div className="text-gray-500">Đang tải...</div>
+        <div className="text-neutral-500">Đang tải...</div>
       </div>
     )
   }
@@ -198,12 +198,12 @@ export default function AdminRepairDetailPage() {
   if (error || !request) {
     return (
       <div>
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md mb-4">
+        <div className="bg-red-50 border border-red-200 text-error px-4 py-3 rounded-sm mb-4">
           {error || "Không tìm thấy yêu cầu sửa chữa."}
         </div>
         <Link
           href="/admin/sua-chua"
-          className="text-blue-600 hover:text-blue-800"
+          className="text-primary hover:text-blue-800"
         >
           ← Quay lại danh sách
         </Link>
@@ -221,11 +221,11 @@ export default function AdminRepairDetailPage() {
         <div>
           <Link
             href="/admin/sua-chua"
-            className="text-sm text-blue-600 hover:text-blue-800 mb-2 inline-block"
+            className="text-sm text-primary hover:text-blue-800 mb-2 inline-block"
           >
             ← Quay lại danh sách
           </Link>
-          <h1 className="text-2xl font-bold text-gray-900">
+          <h1 className="text-2xl font-bold text-neutral-900">
             Chi tiết yêu cầu sửa chữa
           </h1>
         </div>
@@ -240,46 +240,46 @@ export default function AdminRepairDetailPage() {
 
       {/* Notifications */}
       {actionError && (
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md mb-4">
+        <div className="bg-red-50 border border-red-200 text-error px-4 py-3 rounded-sm mb-4">
           {actionError}
         </div>
       )}
       {actionSuccess && (
-        <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-md mb-4">
+        <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-sm mb-4">
           {actionSuccess}
         </div>
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Customer Info */}
-        <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+        <div className="bg-white rounded-md shadow-subtle p-6">
+          <h2 className="text-lg font-semibold text-neutral-900 mb-4">
             Thông tin khách hàng
           </h2>
           <dl className="space-y-3">
             <div>
-              <dt className="text-sm font-medium text-gray-500">Họ tên</dt>
-              <dd className="text-sm text-gray-900">{request.customer_name}</dd>
+              <dt className="text-sm font-medium text-neutral-500">Họ tên</dt>
+              <dd className="text-sm text-neutral-900">{request.customer_name}</dd>
             </div>
             <div>
-              <dt className="text-sm font-medium text-gray-500">
+              <dt className="text-sm font-medium text-neutral-500">
                 Số điện thoại
               </dt>
-              <dd className="text-sm text-gray-900">
+              <dd className="text-sm text-neutral-900">
                 {request.customer_phone}
               </dd>
             </div>
             <div>
-              <dt className="text-sm font-medium text-gray-500">Ngày gửi</dt>
-              <dd className="text-sm text-gray-900">
+              <dt className="text-sm font-medium text-neutral-500">Ngày gửi</dt>
+              <dd className="text-sm text-neutral-900">
                 {new Date(request.created).toLocaleString("vi-VN")}
               </dd>
             </div>
             <div>
-              <dt className="text-sm font-medium text-gray-500">
+              <dt className="text-sm font-medium text-neutral-500">
                 Cập nhật lần cuối
               </dt>
-              <dd className="text-sm text-gray-900">
+              <dd className="text-sm text-neutral-900">
                 {new Date(request.updated).toLocaleString("vi-VN")}
               </dd>
             </div>
@@ -287,18 +287,18 @@ export default function AdminRepairDetailPage() {
         </div>
 
         {/* Device Info */}
-        <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+        <div className="bg-white rounded-md shadow-subtle p-6">
+          <h2 className="text-lg font-semibold text-neutral-900 mb-4">
             Thông tin thiết bị
           </h2>
           <dl className="space-y-3">
             <div>
-              <dt className="text-sm font-medium text-gray-500">Model</dt>
-              <dd className="text-sm text-gray-900">{request.device_model}</dd>
+              <dt className="text-sm font-medium text-neutral-500">Model</dt>
+              <dd className="text-sm text-neutral-900">{request.device_model}</dd>
             </div>
             <div>
-              <dt className="text-sm font-medium text-gray-500">Mô tả lỗi</dt>
-              <dd className="text-sm text-gray-900 whitespace-pre-wrap">
+              <dt className="text-sm font-medium text-neutral-500">Mô tả lỗi</dt>
+              <dd className="text-sm text-neutral-900 whitespace-pre-wrap">
                 {request.issue_description}
               </dd>
             </div>
@@ -307,15 +307,15 @@ export default function AdminRepairDetailPage() {
 
         {/* Images */}
         {request.images && request.images.length > 0 && (
-          <div className="bg-white rounded-lg shadow p-6 lg:col-span-2">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <div className="bg-white rounded-md shadow-subtle p-6 lg:col-span-2">
+            <h2 className="text-lg font-semibold text-neutral-900 mb-4">
               Hình ảnh
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               {request.images.map((image, index) => (
                 <div
                   key={index}
-                  className="aspect-square rounded-lg overflow-hidden border border-gray-200"
+                  className="aspect-square rounded-sm overflow-hidden border border-neutral-200"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -330,15 +330,15 @@ export default function AdminRepairDetailPage() {
         )}
 
         {/* Diagnosis & Cost */}
-        <div className="bg-white rounded-lg shadow p-6 lg:col-span-2">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+        <div className="bg-white rounded-md shadow-subtle p-6 lg:col-span-2">
+          <h2 className="text-lg font-semibold text-neutral-900 mb-4">
             Chẩn đoán & Báo giá
           </h2>
           <div className="space-y-4">
             <div>
               <label
                 htmlFor="diagnosis"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-neutral-700 mb-1"
               >
                 Chẩn đoán
               </label>
@@ -347,18 +347,18 @@ export default function AdminRepairDetailPage() {
                 value={diagnosis}
                 onChange={(e) => setDiagnosis(e.target.value)}
                 rows={4}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                className="w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-subtle focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-sm"
                 placeholder="Nhập kết quả chẩn đoán..."
               />
             </div>
             <div>
               <label
                 htmlFor="estimated_cost"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-neutral-700 mb-1"
               >
                 Chi phí dự kiến (VND)
                 {validNextStatuses.includes(RepairStatus.Quoted) && (
-                  <span className="text-red-500 ml-1">
+                  <span className="text-error ml-1">
                     * Bắt buộc khi báo giá
                   </span>
                 )}
@@ -369,14 +369,14 @@ export default function AdminRepairDetailPage() {
                 value={estimatedCost}
                 onChange={(e) => setEstimatedCost(e.target.value)}
                 min="1"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                className="w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-subtle focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-sm"
                 placeholder="Nhập chi phí dự kiến..."
               />
             </div>
             <button
               onClick={handleSaveDiagnosis}
               disabled={isUpdating}
-              className="px-4 py-2 bg-gray-600 text-white text-sm font-medium rounded-md hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-4 py-2 bg-neutral-600 text-white text-sm font-medium rounded-sm hover:bg-neutral-700 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isUpdating ? "Đang lưu..." : "Lưu chẩn đoán"}
             </button>
@@ -384,13 +384,13 @@ export default function AdminRepairDetailPage() {
         </div>
 
         {/* Status Update Actions */}
-        <div className="bg-white rounded-lg shadow p-6 lg:col-span-2">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+        <div className="bg-white rounded-md shadow-subtle p-6 lg:col-span-2">
+          <h2 className="text-lg font-semibold text-neutral-900 mb-4">
             Cập nhật trạng thái
           </h2>
 
           {validNextStatuses.length === 0 ? (
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-neutral-500">
               Trạng thái hiện tại là trạng thái cuối cùng, không thể chuyển
               tiếp.
             </p>
@@ -401,10 +401,10 @@ export default function AdminRepairDetailPage() {
                   key={nextStatus}
                   onClick={() => handleStatusUpdate(nextStatus)}
                   disabled={isUpdating}
-                  className={`px-4 py-2 text-sm font-medium rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${
+                  className={`px-4 py-2 text-sm font-medium rounded-sm disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${
                     nextStatus === RepairStatus.Cancelled
                       ? "bg-red-600 text-white hover:bg-red-700"
-                      : "bg-blue-600 text-white hover:bg-blue-700"
+                      : "bg-primary text-primary-foreground hover:opacity-90"
                   }`}
                 >
                   {isUpdating

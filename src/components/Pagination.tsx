@@ -77,13 +77,13 @@ export default function Pagination({
 
   return (
     <nav aria-label="Phân trang" className="flex justify-center mt-8">
-      <ul className="flex items-center gap-1">
+      <ul className="flex items-center gap-2">
         {/* Previous button */}
         <li>
           {currentPage > 1 ? (
             <Link
               href={buildPageUrl(basePath, currentPage - 1, searchParams)}
-              className="flex items-center justify-center w-9 h-9 rounded-md border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors"
+              className="flex items-center justify-center w-10 h-10 rounded-full border border-[var(--color-neutral-200)] text-[var(--color-neutral-600)] bg-white hover:bg-[var(--color-neutral-50)] hover:border-[var(--color-neutral-300)] hover:shadow-[var(--shadow-subtle)] transition-all duration-200"
               aria-label="Trang trước"
             >
               <svg
@@ -103,7 +103,7 @@ export default function Pagination({
             </Link>
           ) : (
             <span
-              className="flex items-center justify-center w-9 h-9 rounded-md border border-gray-200 text-gray-300 cursor-not-allowed"
+              className="flex items-center justify-center w-10 h-10 rounded-full border border-[var(--color-neutral-100)] text-[var(--color-neutral-300)] bg-[var(--color-neutral-50)] cursor-not-allowed"
               aria-disabled="true"
             >
               <svg
@@ -129,7 +129,7 @@ export default function Pagination({
           if (page === "ellipsis") {
             return (
               <li key={`ellipsis-${index}`}>
-                <span className="flex items-center justify-center w-9 h-9 text-gray-400">
+                <span className="flex items-center justify-center w-10 h-10 text-[var(--color-neutral-400)] text-sm">
                   …
                 </span>
               </li>
@@ -142,7 +142,7 @@ export default function Pagination({
             <li key={page}>
               {isActive ? (
                 <span
-                  className="flex items-center justify-center w-9 h-9 rounded-md bg-blue-600 text-white font-medium text-sm"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-[var(--color-primary)] text-white font-semibold text-sm shadow-[var(--shadow-medium)]"
                   aria-current="page"
                 >
                   {page}
@@ -150,7 +150,7 @@ export default function Pagination({
               ) : (
                 <Link
                   href={buildPageUrl(basePath, page, searchParams)}
-                  className="flex items-center justify-center w-9 h-9 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors text-sm"
+                  className="flex items-center justify-center w-10 h-10 rounded-full border border-[var(--color-neutral-200)] text-[var(--color-neutral-700)] bg-white hover:bg-[var(--color-primary)]/5 hover:border-[var(--color-primary)]/30 hover:text-[var(--color-primary)] transition-all duration-200 text-sm font-medium"
                 >
                   {page}
                 </Link>
@@ -164,7 +164,7 @@ export default function Pagination({
           {currentPage < totalPages ? (
             <Link
               href={buildPageUrl(basePath, currentPage + 1, searchParams)}
-              className="flex items-center justify-center w-9 h-9 rounded-md border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors"
+              className="flex items-center justify-center w-10 h-10 rounded-full border border-[var(--color-neutral-200)] text-[var(--color-neutral-600)] bg-white hover:bg-[var(--color-neutral-50)] hover:border-[var(--color-neutral-300)] hover:shadow-[var(--shadow-subtle)] transition-all duration-200"
               aria-label="Trang sau"
             >
               <svg
@@ -184,7 +184,7 @@ export default function Pagination({
             </Link>
           ) : (
             <span
-              className="flex items-center justify-center w-9 h-9 rounded-md border border-gray-200 text-gray-300 cursor-not-allowed"
+              className="flex items-center justify-center w-10 h-10 rounded-full border border-[var(--color-neutral-100)] text-[var(--color-neutral-300)] bg-[var(--color-neutral-50)] cursor-not-allowed"
               aria-disabled="true"
             >
               <svg
